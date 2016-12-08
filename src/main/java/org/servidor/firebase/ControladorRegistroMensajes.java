@@ -52,7 +52,20 @@ public class ControladorRegistroMensajes {
         Clave registro = mapper.readValue(json,Clave.class );
               repoClave.save(registro);
         System.out.println("Registrado con exito");
-        return "registrado con exito";
+        
+        //Super importante que regrese el success de json
+         //Preparamos la respuesta
+        Map map = new HashMap();
+        map.put("success", true);
+        //Si hubiera un error, aqui enviamos en el map en evz de tru false y agergamos el put de error con el
+        //error que desees
+        //map.put("errors", "File not found in the specified path.");
+        // mm.setTitulo(titulo);
+        //  mm.setCuerpo(cuerpo);
+        /// servicio.agregarMensaje(mm);
+        return maper.writeValueAsString(map);
+        
+ 
     }
 
     @CrossOrigin
